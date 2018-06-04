@@ -742,6 +742,11 @@ background-color:rgb(64, 91, 38);
   flex:6;
   background-color: lightgrey;
   justify-content: center;
+  border:0px;
+}
+
+.dropdown-search{
+  text-align: center;
 }
 
 .dropdown > #dropdown-btn{
@@ -1408,8 +1413,10 @@ flex:1.5;
 
 }
 
+/*----- index14.html end-----*/
+/*----- index14.html end-----*/
+/*----- index14.html end-----*/
 
-
-/*----- index14.html end-----*/
-/*----- index14.html end-----*/
-/*----- index14.html end-----*/
+p{
+  
+}

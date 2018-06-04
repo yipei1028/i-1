@@ -8,7 +8,7 @@
   <title>我是誰-2</title>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 
@@ -116,7 +116,7 @@
   <div class="match-container">
     <div id="p1">
       <div class="match-img">
-        <img src="./image/gray.jpg" alt="">
+        <img src="./image/profile-picture/profile-picture-11.jpg" alt="">
       </div>
       <div class="match-name">
         王小明
@@ -127,10 +127,10 @@
     </div>
     <div id="p2">
       <div class="match-img">
-        <img src="./image/gray.jpg" alt="">
+        <img id="match-img" src="./image/profile-picture/profile-picture-11.jpg" alt="">
       </div>
       <div class="match-name">
-        王小明
+        陳小美
       </div>
     </div>
   </div>
@@ -138,22 +138,24 @@
   <div class="select-bar-container">
     <div class="select-bar">
       <div class="high-school">
-        <span id="highschool-name">松山高中</span>
+        <span class="highschool-dropdown-content" id="highschool-name" onclick="showHighSchool()">松山高中</span>
         <span id="highschool-dropdown-btn">
           &#9660;
         </span>
         <div class="high-school-dropdown-content">
-          <p>北一女中</p>
+          <p class="club-dropdown-item dropdown-choosed-highschool-item" onclick="showResultOfHighSchool(0)">北一女中</p>
+          <p class="club-dropdown-item dropdown-choosed-highschool-item" onclick="showResultOfHighSchool(1)">政大附中</p>
         </div>
       </div>
 
       <div class="club">
-        <span id="club-title">吉他社</span>
+        <span id="club-title" onclick="showClub()">吉他社</span>
         <span id="club-dropdown-btn">
           &#9660;
         </span>
         <div class="club-dropdown-content">
-          <p>烹飪社</p>
+          <p class="dropdown-choosed-club-item" onclick="showResultOfClub(0)"> 烹飪社</p>
+          <p class="dropdown-choosed-club-item" onclick="showResultOfClub(1)"> 園藝社</p>
         </div>
       </div>
       <div class="gender-amount">5女</div>
@@ -163,10 +165,6 @@
 
   <div class="card-container">
     <div class="card-item">
-      <img src="./image/nobg-09.png" class="showed-img" onclick=changeImage(this) alt="">
-      <img src="./image/profile-picture/profile-picture-12.jpg" class="hidden-img" style="display: none;" alt="">
-    </div>
-    <div class="card-item">
       <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
@@ -176,7 +174,10 @@
       <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
-      <img src="./image/profile-picture/profile-picture-1.jpg" onclick=changeImage(this) alt="">
+      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
+    </div>
+    <div class="card-item">
+      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
       <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
@@ -242,13 +243,49 @@
 <script>
   function changeImage(img) {
     if (img.src.match('./image/nobg-09.png')) {
-      // img.src = "'./image/profile-picture/profile-picture-" + (Math.floor((Math.random() * 13) + 1)) + ".jpg";
-      // console.log((Math.floor((Math.random() * 13) + 1)));
-      img.src = "./image/profile-picture/profile-picture-12.jpg";
+      var imgNum = (Math.floor((Math.random() * 13) + 1));
+      img.src = "image/profile-picture/profile-picture-" + imgNum + ".jpg";
+      document.getElementById('match-img').src = img.src;
     } else {
       img.src = "./image/nobg-09.png";
     }
   }
+
+  function showResultOfHighSchool(i) {
+    var showChosenItem = document.getElementsByClassName('high-school-dropdown-content')[0];
+    $("#highschool-name").text(showChosenItem.getElementsByClassName("dropdown-choosed-highschool-item")[i].innerHTML);
+    $(".high-school-dropdown-content").hide();
+  }
+
+  function showHighSchool() {
+    $(".high-school-dropdown-content").show();
+  }
+
+  function showClub() {
+    $(".club-dropdown-content").show();
+  }
+
+  function showResultOfClub(i) {
+    var showChosenItem = document.getElementsByClassName('club-dropdown-content')[0];
+    $("#club-title").text(showChosenItem.getElementsByClassName("dropdown-choosed-club-item")[i].innerHTML);
+    $(".club-dropdown-content").hide();
+  }
+
+  var cardItem = document.getElementsByClassName("card-item");
+
+  function oneTimeClick() {
+    var imgSrc = cardItem[0].src;
+    if (imgSrc == '/image/nobg-09.png') {
+      console.log('stop');
+    } else {
+      cardItem[0].style.backgroundColor = "red";
+    }
+  }
+
+  for (var i = 0; i < cardItem.length; i++) {
+    cardItem[i].addEventListener('click', oneTimeClick);
+  }
+
 
 </script>
 

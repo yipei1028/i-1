@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我是誰-5</title>
   <link rel="stylesheet" href="./style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -93,13 +94,13 @@
     </div>
     <div class="dropdown-container">
       <span class="dropdown">
-        <span id="dropdown-choosed-item">社團選擇</span>
+        <span id="dropdown-choosed-item" onclick="show()">社團選擇</span>
         <span id="dropdown-btn">
           &#9660;
         </span>
-        <div class="dropdown-content">
-          <p>吉他社</p>
-          <p>烹飪社</p>
+        <div class="dropdown-content" style="display: none;">
+          <p class="club-dropdown-item" id="club-dropdown-1" onclick="showResult(0)" value="吉他社">吉他社</p>
+          <p class="club-dropdown-item" id="club-dropdown-2" onclick="showResult(1)" value="烹飪社">烹飪社</p>
         </div>
       </span>
     </div>
@@ -115,7 +116,7 @@
     </div>
     <div class="dropdown-container" id="club-member-dropdown-container">
       <span class="dropdown">
-        <span id="dropdown-choosed-item">搜尋社員</span>
+        <input id="dropdown-choosed-item" class="dropdown-search" placeholder="搜尋社員"></input>
         <span id="dropdown-btn">
           <i class="fa fa-search"></i>
         </span>
@@ -260,5 +261,16 @@
 
 
 </body>
+<script>
+  function show() {
+    $(".dropdown-content").show();
+  }
+
+  function showResult(i) {
+    var showChosenItem = document.getElementsByClassName('dropdown-content')[0];
+    $("#dropdown-choosed-item").text(showChosenItem.getElementsByClassName("club-dropdown-item")[i].innerHTML);
+    $(".dropdown-content").hide();
+  }
+</script>
 
 </html>

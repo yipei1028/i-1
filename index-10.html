@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>我是誰-10</title>
   <link rel="stylesheet" href="./style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -98,13 +99,6 @@
     </div>
   </div>
 
-  <span class="dropdown">
-    <div class="dropdown-content">
-      <p>吉他社</p>
-      <p>烹飪社</p>
-    </div>
-  </span>
-
 
   <div class="goal-main-container">
     <div class="goal-single-first-col goal-single-col">
@@ -112,10 +106,10 @@
     </div>
     <div class="goal-single-second-col goal-single-col">
       <div class="goal-dropdown">
-        <span>台北醫學大學</span>
-        <div class="goal-dropdown-content">
-          <p>台北城市大學</p>
-          <p>國立臺灣大學</p>
+        <span id="dropdown-choosed-university-item" onclick="showUniversity()">台北醫學大學</span>
+        <div class="goal-dropdown-content university-dropdown-content">
+          <p class="club-dropdown-item dropdown-choosed-university-item" onclick="showResultOfUniversity(0)">台北城市大學</p>
+          <p class="club-dropdown-item dropdown-choosed-university-item" onclick="showResultOfUniversity(1)">國立臺灣大學</p>
         </div>
         <span id="dropdown-btn">
           &#9660;
@@ -125,10 +119,10 @@
     </div>
     <div class="goal-single-third-col goal-single-col">
       <div class="goal-dropdown">
-        <span>醫學系</span>
-        <div class="goal-dropdown-content">
-          <p>美術系</p>
-          <p>數學系</p>
+        <span id="dropdown-choosed-major-item" onclick="showMajor()">醫學系</span>
+        <div class="club-dropdown-content major-dropdown-content">
+          <p class="club-dropdown-item dropdown-choosed-major-item" onclick="showResultOfMajor(0)">美術系</p>
+          <p class="club-dropdown-item dropdown-choosed-major-item" onclick="showResultOfMajor(1)">數學系</p>
         </div>
         <span id="dropdown-btn">
           &#9660;
@@ -246,5 +240,27 @@
   </nav>
   <!--bottom-nav end-->
 </body>
+<script>
+  function showUniversity() {
+    $(".university-dropdown-content").show();
+  }
+  function showResultOfUniversity(i) {
+    var showChosenItem = document.getElementsByClassName('university-dropdown-content')[0];
+    $("#dropdown-choosed-university-item").text(showChosenItem.getElementsByClassName("dropdown-choosed-university-item")[i].innerHTML);
+    $(".university-dropdown-content").hide();
+  }
+
+  function showMajor() {
+    $(".major-dropdown-content").show();
+  }
+
+  function showResultOfMajor(i) {
+    var showChosenItem = document.getElementsByClassName('major-dropdown-content')[0];
+    $("#dropdown-choosed-major-item").text(showChosenItem.getElementsByClassName("dropdown-choosed-major-item")[i].innerHTML);
+    $(".major-dropdown-content").hide();
+  }
+
+
+</script>
 
 </html>

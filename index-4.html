@@ -8,6 +8,7 @@
   <title>我是誰-4
   </title>
   <link rel="stylesheet" href="./style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -92,21 +93,23 @@
   <div class="one-third-container">
     <div class="blank">
     </div>
+
     <div class="dropdown-container">
       <span class="dropdown">
-        <span id="dropdown-choosed-item">社團選擇</span>
+        <span id="dropdown-choosed-item" onclick="show()">社團選擇</span>
         <span id="dropdown-btn">
           &#9660;
         </span>
-        <div class="dropdown-content">
-          <p id="club-dropdown-1" value="吉他社">吉他社</p>
-          <p id="club-dropdown-2" value="烹飪社">烹飪社</p>
+        <div class="dropdown-content" style="display: none;">
+          <p class="club-dropdown-item" id="club-dropdown-1" onclick="showResult(0)" value="吉他社">吉他社</p>
+          <p class="club-dropdown-item" id="club-dropdown-2" onclick="showResult(1)" value="烹飪社">烹飪社</p>
         </div>
       </span>
     </div>
     <div class="blank">
     </div>
   </div>
+
   <div class="rules">
     <div class="rules-cover">
       <img src="./image/test-cover-6.jpg" width="100%" alt="rules-cover">
@@ -173,8 +176,18 @@
   console.log(dropdown[0].textContent);
 
 
-  function userInputChanged() { 
+  function userInputChanged() {
     document.getElementById('dropdown-choosed-item').textContent = '11';
+  }
+
+  function show() {
+    $(".dropdown-content").show();
+  }
+
+  function showResult(i) {
+    var showChosenItem = document.getElementsByClassName('dropdown-content')[0];
+    $("#dropdown-choosed-item").text(showChosenItem.getElementsByClassName("club-dropdown-item")[i].innerHTML);
+    $(".dropdown-content").hide();
   }
 </script>
 
