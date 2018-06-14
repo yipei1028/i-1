@@ -1431,3 +1431,8 @@ flex:1;
 *{
   font-size:15px;
 }
+
+button{
+  border:0px;
+  background-color: #fff;
+}
