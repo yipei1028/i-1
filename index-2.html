@@ -285,7 +285,7 @@
   //在每一次點擊的時候檢查
   //如果分開寫的話，會因為非同步的關係oneTimeClick先執行了～所以cards[i]都還是0 
   function oneTimeClick() {
-    $("div[class^='card-item']").remove
+    $("img[id^='card']").removeAttr('onclick');
   }
 </script>
 
