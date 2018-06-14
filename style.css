@@ -1417,6 +1417,6 @@ flex:1.5;
 /*----- index14.html end-----*/
 /*----- index14.html end-----*/
 
-p{
-  
+#bottom-nav-profile-pic{
+  filter: grayscale(0%);
 }

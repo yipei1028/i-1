@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="icon" href="./image/favicon.ico" type="image/x-icon" />
 </head>
 
 
@@ -150,7 +151,7 @@
 
       <div class="club">
         <span id="club-title" onclick="showClub()">吉他社</span>
-        <span id="club-dropdown-btn">
+        <span id="club-dropdown-btn" onclick="showClub()">
           &#9660;
         </span>
         <div class="club-dropdown-content">
@@ -165,31 +166,31 @@
 
   <div class="card-container">
     <div class="card-item">
-      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
+      <img src="./image/nobg-09.png" id="card0" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
-      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
+      <img src="./image/nobg-09.png" id="card1" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
-      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
+      <img src="./image/nobg-09.png" id="card2" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
-      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
+      <img src="./image/nobg-09.png" id="card3" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
-      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
+      <img src="./image/nobg-09.png" id="card4" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
-      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
+      <img src="./image/nobg-09.png" id="card5" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
-      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
+      <img src="./image/nobg-09.png" id="card6" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
-      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
+      <img src="./image/nobg-09.png" id="card7" onclick=changeImage(this) alt="">
     </div>
     <div class="card-item">
-      <img src="./image/nobg-09.png" onclick=changeImage(this) alt="">
+      <img src="./image/nobg-09.png" id="card8" onclick=changeImage(this) alt="">
     </div>
   </div>
 
@@ -241,11 +242,16 @@
 </body>
 
 <script>
+  var cardItem = document.getElementsByClassName("card-item");
+  var cards = [-1, -1, -1, -1, -1, -1, -1, -1, -1];
+
   function changeImage(img) {
     if (img.src.match('./image/nobg-09.png')) {
       var imgNum = (Math.floor((Math.random() * 13) + 1));
       img.src = "image/profile-picture/profile-picture-" + imgNum + ".jpg";
       document.getElementById('match-img').src = img.src;
+      cards[this] = 0;
+      console.log(cards[this]);
     } else {
       img.src = "./image/nobg-09.png";
     }
@@ -271,22 +277,19 @@
     $(".club-dropdown-content").hide();
   }
 
-  var cardItem = document.getElementsByClassName("card-item");
 
+  //用一個陣列儲存一開始的狀態
+  //用一個變數儲存現在被點擊的次數(還沒點擊:-1,點過了:1)
+  //用這個變數來判斷使用者不能再點擊第二次
+  //在每一次點擊的時候檢查
+  //如果分開寫的話，會因為非同步的關係oneTimeClick先執行了～所以cards[i]都還是0 
   function oneTimeClick() {
-    var imgSrc = cardItem[0].src;
-    if (imgSrc == '/image/nobg-09.png') {
-      console.log('stop');
-    } else {
-      cardItem[0].style.backgroundColor = "red";
+    for (var i = 0; i < cardItem.length; i++) {
+      if (cards[i] !== -1) {
+        console.log('11');
+      }
     }
   }
-
-  for (var i = 0; i < cardItem.length; i++) {
-    cardItem[i].addEventListener('click', oneTimeClick);
-  }
-
-
 </script>
 
 </html>
