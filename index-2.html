@@ -250,8 +250,9 @@
       var imgNum = (Math.floor((Math.random() * 13) + 1));
       img.src = "image/profile-picture/profile-picture-" + imgNum + ".jpg";
       document.getElementById('match-img').src = img.src;
+      img.style = "transition: all 200ms ease-out;";
       cards[this] = 0;
-      console.log(cards[this]);
+      oneTimeClick();
     } else {
       img.src = "./image/nobg-09.png";
     }
@@ -284,11 +285,7 @@
   //在每一次點擊的時候檢查
   //如果分開寫的話，會因為非同步的關係oneTimeClick先執行了～所以cards[i]都還是0 
   function oneTimeClick() {
-    for (var i = 0; i < cardItem.length; i++) {
-      if (cards[i] !== -1) {
-        console.log('11');
-      }
-    }
+    $("div[class^='card-item']").remove
   }
 </script>
 
