@@ -5,7 +5,6 @@
   color:gray;
   text-decoration: none;
   list-style: none;
-  font-size:15px;
 }
 
 body,html{
@@ -1429,6 +1428,7 @@ flex:1;
   filter: grayscale(0%);
 }
 
-.dropdown-choosed-university-item{
-  font-size:13px;
+
+*{
+  font-size:15px;
 }
