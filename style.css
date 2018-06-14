@@ -611,9 +611,9 @@ font-size:10px;
   font-size:10px;
 }
 
-.high-school-dropdown-content > p{
+/* .high-school-dropdown-content > p{
 font-size:10px;
-}
+} */
 
 .high-school > #highschool-name{
   flex:5;
