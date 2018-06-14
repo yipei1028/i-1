@@ -743,6 +743,7 @@ background-color:rgb(64, 91, 38);
   background-color: lightgrey;
   justify-content: center;
   border:0px;
+  border-radius: 0%;
 }
 
 .dropdown-search{
